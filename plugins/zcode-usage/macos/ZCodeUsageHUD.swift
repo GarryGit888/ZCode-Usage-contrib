@@ -587,7 +587,9 @@ final class HUDContentView: NSView {
             y += 4 + 8
         }
 
-        for r in rows {
+        // 只为可见行分配位置：隐藏行若仍推进 y，会把下方内容整体压出面板底部，
+        // 而 preferredHeight 按可见行数计算，两边口径不一致导致底部内容被裁切
+        for r in rows where !r.isHidden {
             r.frame = NSRect(x: pad, y: y, width: w, height: QuotaRowView.rowHeight)
             r.needsLayout = true
             y += QuotaRowView.rowHeight + 8

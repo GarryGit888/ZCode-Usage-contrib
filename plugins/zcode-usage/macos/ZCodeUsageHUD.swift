@@ -800,7 +800,7 @@ final class CredentialSetupView: NSView {
         keyLabel.stringValue = "API Key"
         keyField.placeholderString = "在此粘贴 API Key"
         keyField.font = .systemFont(ofSize: 12)
-        keyField.setFocusRingType(.exterior)
+        keyField.focusRingType = .exterior
 
         saveButton.title = "保存并查询"
         saveButton.bezelStyle = .rounded
@@ -853,7 +853,7 @@ final class CredentialSetupView: NSView {
     @objc private func saveAction() {
         let key = keyField.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !key.isEmpty else {
-            NSApp.beep()
+            NSSound.beep()
             hintLabel.stringValue = "请先粘贴 API Key 再保存"
             return
         }

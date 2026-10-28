@@ -1,4 +1,13 @@
-# ZCode Usage — 0.0.7
+# ZCode Usage — 0.0.7 (个人修改版)
+
+> **Fork 自 [ssbh163/ZCode-Usage](https://github.com/ssbh163/ZCode-Usage)**，在原版基础上对 macOS 悬浮窗做了重设计：
+>
+> 1. **交互改为菜单栏弹窗**：常驻菜单栏 ⚡ 图标（SF Symbols，自动适配深浅色），左键点击弹出系统原生 `NSPopover` 面板，点击面板外任意位置自动收起；右键图标打开配置 / 退出菜单。不再是无边框置顶悬浮窗。
+> 2. **修复边缘裁切**：原版自绘圆角外框 + 布局未跳过隐藏额度行，导致底部内容被裁掉；新版外框交给系统弹窗，布局只排可见行，问题根治。
+> 3. **修复两处 Swift 编译错误**：`setFocusRingType` → `focusRingType` 属性赋值、`NSApp.beep()` → `NSSound.beep()`（原版 `build.sh` 在新版工具链下无法编译）。
+>
+> Windows 悬浮窗、CLI 查询、hook 注入等其余功能与上游一致。上游有更新时可直接合并。
+
 
 支持API KEY与账号登录两种方式查询 GLM Coding Plan 额度(当日高峰/非高峰拆分),悬浮窗展示:
 
